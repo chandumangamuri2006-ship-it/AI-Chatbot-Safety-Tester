@@ -21,7 +21,12 @@ RESULTS = BASE_DIR / "results.csv"
 # -----------------------------
 # Load Questions
 # -----------------------------
-questions = pd.read_csv(DATA)
+try:
+    questions = pd.read_csv(DATA)
+except Exception as e:
+    st.error("Unable to read data/test_questions.csv")
+    st.code(str(e))
+    st.stop()
 
 # -----------------------------
 # Title
